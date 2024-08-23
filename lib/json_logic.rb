@@ -61,7 +61,7 @@ module JSONLogic
   end
 
   def self.add_operation(operator, function)
-    Operation.class.send(:define_method, operator) do |v, d|
+    Operation.define_singleton_method(operator) do |v, d|
       function.call(v, d)
     end
   end

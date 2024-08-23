@@ -144,11 +144,5 @@ module JSONLogic
     def self.is_iterable?(operator)
       ['filter', 'some', 'all', 'none', 'in', 'map', 'reduce'].include?(operator.to_s)
     end
-
-    def self.add_operation(operator, function)
-      self.class.send(:define_method, operator) do |v, d|
-        function.call(v, d)
-      end
-    end
   end
 end
